@@ -10,8 +10,8 @@ namespace WebApplication4.Models
     public class Model
     {
         int i;
-        string[] wordsArray = { "", "", "մեկ", "երկու", "երեք", "չորս", "հինգ", "վեց", "յոթ", "ութ", "ինը", "տաս", "տասնմեկ", "տասներկու", "տասներեք", "տասնչորս", "տասնհինգ", "տասնվեց", "տասնյոթ", "տասնութ", "տասնինը" };
-        string[] words2Array = { "", "", "քսան", "երեսուն", "քառասուն", "հիսուն", "վաթսուն", "յոթանասուն", "ութսուն", "իննսուն", "հարյուր" };
+        string[] wordsArray = { "", "մեկ", "երկու", "երեք", "չորս", "հինգ", "վեց", "յոթ", "ութ", "ինը" };
+        string[] words2Array = { "", "տաս", "քսան", "երեսուն", "քառասուն", "հիսուն", "վաթսուն", "յոթանասուն", "ութսուն", "իննսուն", "հարյուր" };
         string[] words3Array = { "", "հարյուր", "հազար", "միլիոն ", "միլիարդ " };
         public string SetNumber(long number)
         {
@@ -82,13 +82,13 @@ namespace WebApplication4.Models
                     number %= 100;
                     resultik += " ";
                 }
-            } 
+            }
             if (number > 0) {
-                if (number < 20)
-                    resultik += wordsArray[number+1];
+                if (number < 20 && number > 10)
+                    resultik += words2Array[number / 10] + "ն" + wordsArray[number % 10];
                 else
                 {
-                    resultik += words2Array[number / 10] + wordsArray[1+number % 10];
+                    resultik += words2Array[number / 10] + wordsArray[number % 10];
                     number %= 10;
                 }
 
